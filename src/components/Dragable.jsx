@@ -13,6 +13,7 @@ function Dragable(props) {
 
   useEffect(() => {
     const controls = new DragControls(children, camera, gl.domElement);
+    controls.transformGroup = props.transformGroup;
     controls.addEventListener("hoveron", (e) => {
       props.orbitControls.enabled = false;
     });
@@ -32,7 +33,7 @@ function Dragable(props) {
     return () => {
       controls.dispose();
     };
-  }, [camera, gl, children, scene, props.orbitControls]);
+  }, [camera, gl, children, scene, props.orbitControls, props.transformGroup]);
 
   extend({ DragControls });
   return <group ref={groupRef}>{props.children}</group>;
