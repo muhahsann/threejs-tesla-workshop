@@ -14,10 +14,20 @@ function Dragable(props) {
   useEffect(() => {
     const controls = new DragControls(children, camera, gl.domElement);
     controls.addEventListener("hoveron", (e) => {
-        props.orbitControls.enabled = false;
+      props.orbitControls.enabled = false;
     });
     controls.addEventListener("hoveroff", (e) => {
-        props.orbitControls.enabled = false;
+      props.orbitControls.enabled = false;
+    });
+    controls.addEventListener("dragstart", (e) => {
+      e.object.api.mass.set(0);
+    });
+    controls.addEventListener("dragend", (e) => {
+      e.object.api.mass.set(1);
+    });
+    controls.addEventListener("drag", (e) => {
+      e.object.api.position.copy(e.object.position);
+      e.object.api.velocity.set(0, 0, 0);
     });
     return () => {
       controls.dispose();
