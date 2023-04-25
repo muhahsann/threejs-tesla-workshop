@@ -1,10 +1,10 @@
 import React from "react";
 import * as THREE from "three";
-import { useFrame, useLoader } from "@react-three/fiber";
-import { useRef } from "react";
+import { useLoader } from "@react-three/fiber";
+import { useBox } from "@react-three/cannon";
 
 function Box(props) {
-  const ref = useRef();
+  const [ref, api] = useBox(() => ({mass:1,...props}));
   const texture = useLoader(THREE.TextureLoader, "/wood.jpeg");
 
   const handlePointerDown = (e) => {
@@ -32,13 +32,11 @@ function Box(props) {
     object.scale.y = 1;
     object.scale.z = 1;
   };
-  useFrame((state) => {
-    ref.current.rotation.x += 0.01;
-    ref.current.rotation.y += 0.01;
-  });
+
   return (
     <mesh
       ref={ref}
+      api={api}
       {...props}
       castShadow
       onPointerDown={handlePointerDown}
