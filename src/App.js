@@ -7,9 +7,8 @@ import Floor from "./components/Floor";
 import Background from "./components/Background";
 import Bulb from "./components/Bulb";
 import ColorPick from "./components/ColorPick";
-import Dragable from "./components/Dragable";
-import Model from "./components/Model";
-import BoundingBox from "./components/BoundingBox";
+import Cars from "./components/Cars";
+import CameraControls from "./components/CameraControls";
 
 function App() {
   const [orbitControls, setOrbitControls] = useState();
@@ -21,41 +20,13 @@ function App() {
         style={{ background: "black" }}
         camera={{ position: [7, 7, 7] }}
       >
-        <ambientLight intensity={0.2} />
         <Orbit setOrbitControls={setOrbitControls} />
+        <CameraControls orbitControls={orbitControls} />
+        <ambientLight intensity={0.2} />
         <axesHelper args={[5]} />
         <Bulb position={[0, 3, 0]} />
         <Physics>
-          <Suspense fallback={null}>
-            <Dragable orbitControls={orbitControls} transformGroup>
-              <BoundingBox
-                // visible
-                position={[4, 4, 0]}
-                dims={[3, 2, 6]}
-                offset={[0, -0.9, 0.5]}
-              >
-                <Model
-                  path="/tesla_1/scene.gltf"
-                  scale={new Array(3).fill(1.8)}
-                  rotation={[0,0,0]}
-                />
-              </BoundingBox>
-            </Dragable>
-            <Dragable orbitControls={orbitControls} transformGroup>
-              <BoundingBox
-                // visible
-                position={[-4, 4, 0]}
-                dims={[3, 2, 6]}
-                offset={[0, 0.5, 0]}
-              >
-                <Model
-                  path="/tesla_2/scene.gltf"
-                  scale={new Array(3).fill(1.8)}
-                  rotation={[0,3.15,0]}
-                />
-              </BoundingBox>
-            </Dragable>
-          </Suspense>
+          <Cars orbitControls={orbitControls} />
           <Suspense fallback={null}>
             <Background />
           </Suspense>
