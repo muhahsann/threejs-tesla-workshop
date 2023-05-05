@@ -9,12 +9,14 @@ import Bulb from "./components/Bulb";
 import ColorPick from "./components/ColorPick";
 import Cars from "./components/Cars";
 import CameraControls from "./components/CameraControls";
+import CameraButton from "./components/CameraButton";
 
 function App() {
   const [orbitControls, setOrbitControls] = useState();
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
       <ColorPick />
+      <CameraButton />
       <Canvas
         shadowmap="true"
         style={{ background: "black" }}
