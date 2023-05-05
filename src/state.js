@@ -1,10 +1,13 @@
 import * as THREE from "three";
 
+//car_1_name: TRDEF-Body_car_main_paint_0
+//car_2_name: bodyshell_primary_0
 const state = {
-  activeMesh: null,
-  cameraPos: new THREE.Vector3(7, 7, 7),
+  activeMesh: { material: { color: null } },
+  activeMeshName: "TRDEF-Body_car_main_paint_0",
+  cameraPos: new THREE.Vector3(10, 3, 5),
   target: new THREE.Vector3(4, 0, 0),
-  shouldUpdate: true
+  shouldUpdate: true,
 };
 
 export default state;
