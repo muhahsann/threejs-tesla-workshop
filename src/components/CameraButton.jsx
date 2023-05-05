@@ -21,15 +21,18 @@ function CameraButton() {
     1: {
       cameraPos: [10, 3, 5],
       target: [4, 0, 0],
+      name: "TRDEF-Body_car_main_paint_0",
     },
     2: {
       cameraPos: [1, 2, 5],
       target: [-4, 0, 0],
+      name: "bodyshell_primary_0",
     },
   };
   const handleClick = (num) => {
     state.cameraPos.set(...sets[num].cameraPos);
     state.target.set(...sets[num].target);
+    state.activeMeshName = sets[num].name;
     state.shouldUpdate = true;
   };
   return (
