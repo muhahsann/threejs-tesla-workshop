@@ -5,11 +5,16 @@ import { Physics } from "@react-three/cannon";
 import Orbit from "./components/Orbit";
 import Floor from "./components/Floor";
 import Background from "./components/Background";
-import Bulb from "./components/Bulb";
 import ColorPick from "./components/ColorPick";
 import Cars from "./components/Cars";
 import CameraControls from "./components/CameraControls";
 import CameraButton from "./components/CameraButton";
+import Lights from "./components/Lights";
+import {
+  EffectComposer,
+  DepthOfField,
+  Bloom,
+} from "@react-three/postprocessing";
 
 function App() {
   const [orbitControls, setOrbitControls] = useState();
@@ -27,15 +32,20 @@ function App() {
         </Suspense>
         <Orbit setOrbitControls={setOrbitControls} />
         <CameraControls orbitControls={orbitControls} />
-        <ambientLight intensity={0.2} />
-        <axesHelper args={[5]} />
-        <Bulb position={[-6, 3, 0]} />
-        <Bulb position={[0, 3, 0]} />
-        <Bulb position={[6, 3, 0]} />
+        <Lights />
         <Physics>
           <Cars orbitControls={orbitControls} />
           <Floor position={[0, -0.5, 0]} />
         </Physics>
+        <EffectComposer>
+          <DepthOfField
+            focusDistance={0}
+            focalLength={0.02}
+            bokehScale={2}
+            height={480}
+          />
+          <Bloom luminanceThreshold={1} luminanceSmothing={0.9} height={300} />
+        </EffectComposer>
       </Canvas>
     </div>
   );
