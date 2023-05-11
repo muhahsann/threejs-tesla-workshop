@@ -4,7 +4,7 @@ import Dragable from "./Dragable";
 import BoundingBox from "./BoundingBox";
 import Model from "./Model";
 
-function Cars({orbitControls}) {
+function Cars({ orbitControls }) {
   return (
     <Suspense fallback={null}>
       <Dragable orbitControls={orbitControls} transformGroup>
@@ -15,7 +15,7 @@ function Cars({orbitControls}) {
           offset={[0, -0.9, 0.5]}
         >
           <Model
-            path="/tesla_1/scene.gltf"
+            path={`${process.env.PUBLIC_URL}/tesla_1/scene.gltf`}
             scale={new Array(3).fill(1.8)}
             rotation={[0, 0, 0]}
           />
@@ -29,12 +29,15 @@ function Cars({orbitControls}) {
           offset={[0, 0.5, 0]}
         >
           <Model
-            path="/tesla_2/scene.gltf"
+            path={`${process.env.PUBLIC_URL}/tesla_2/scene.gltf`}
             scale={new Array(3).fill(1.8)}
             rotation={[0, 3.15, 0]}
           />
         </BoundingBox>
       </Dragable>
+      {/* <group rotation={[0, Math.PI, 0]}> */}
+        <Model path={`${process.env.PUBLIC_URL}/mech_drone/scene.gltf`} scale={new Array(3).fill(8)} />
+      {/* </group> */}
     </Suspense>
   );
 }
