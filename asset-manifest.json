@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/threejs-tesla-workshop/static/css/main.073c9b0a.css",
+    "main.js": "/threejs-tesla-workshop/static/js/main.038a5ebe.js",
+    "static/js/787.2d72418a.chunk.js": "/threejs-tesla-workshop/static/js/787.2d72418a.chunk.js",
+    "index.html": "/threejs-tesla-workshop/index.html",
+    "main.073c9b0a.css.map": "/threejs-tesla-workshop/static/css/main.073c9b0a.css.map",
+    "main.038a5ebe.js.map": "/threejs-tesla-workshop/static/js/main.038a5ebe.js.map",
+    "787.2d72418a.chunk.js.map": "/threejs-tesla-workshop/static/js/787.2d72418a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.038a5ebe.js"
+  ]
+}
