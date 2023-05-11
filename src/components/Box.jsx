@@ -5,7 +5,7 @@ import { useBox } from "@react-three/cannon";
 
 function Box(props) {
   const [ref, api] = useBox(() => ({mass:1,...props}));
-  const texture = useLoader(THREE.TextureLoader, "/wood.jpeg");
+  const texture = useLoader(THREE.TextureLoader, `${process.env.PUBLIC_URL}/wood.jpeg`);
 
   const handlePointerDown = (e) => {
     e.object.active = true;
