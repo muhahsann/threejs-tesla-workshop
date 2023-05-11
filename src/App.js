@@ -10,11 +10,7 @@ import Cars from "./components/Cars";
 import CameraControls from "./components/CameraControls";
 import CameraButton from "./components/CameraButton";
 import Lights from "./components/Lights";
-import {
-  EffectComposer,
-  DepthOfField,
-  Bloom,
-} from "@react-three/postprocessing";
+import Effect from "./components/Effect";
 
 function App() {
   const [orbitControls, setOrbitControls] = useState();
@@ -23,6 +19,12 @@ function App() {
       <ColorPick />
       <CameraButton />
       <Canvas
+        gl={{
+          powerPrefrence: "high-performance",
+          antialias: false,
+          stencil: false,
+          depth: false,
+        }}
         shadowmap="true"
         style={{ background: "black" }}
         camera={{ position: [7, 7, 7] }}
@@ -37,15 +39,7 @@ function App() {
           <Cars orbitControls={orbitControls} />
           <Floor position={[0, -0.5, 0]} />
         </Physics>
-        <EffectComposer>
-          <DepthOfField
-            focusDistance={0}
-            focalLength={0.02}
-            bokehScale={2}
-            height={480}
-          />
-          <Bloom luminanceThreshold={1} luminanceSmothing={0.9} height={300} />
-        </EffectComposer>
+        <Effect />
       </Canvas>
     </div>
   );
